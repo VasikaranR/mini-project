@@ -1,0 +1,61 @@
+
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h2>Library Management App</h2>
+  
+
+</div>
+
+
+</nav>
+<!--jumbotron-->
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Welcome to the Library</h1>
+     <p class="col-md-8 fs-4">you can save the books using angular</p>
+     <a class="btn btn-primary btn-lg" target="_blank"type="button" href="https://angular.io/">learn more</a>
+    </div>
+   </div>
+<!--close jumbotron-->
+<!-- table here-->
+<table class="table mt-4">
+  <thead>
+      <tr>
+        <th scope="col">book Id</th>
+        <th scope="col">book Name</th>
+        <th scope="col">category</th>
+        <th scope="col">Author</th>
+        <th scope="col">Action</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.category}}</td>
+        <td>{{user.author}}</td>
+       <p *ngIf="roleName=='user' else elsecase">
+        <td>
+            <button  (click)="view()" class="btn btn-info">View</button>&nbsp;
+            <button (click)="lend()" class="btn btn-primary">Lend</button>
+        </td>
+      </p>
+      <ng-template #elsecase>
+        <td>
+        <button (click)="edit()" class="btn btn-warning">Edit</button>&nbsp;
+        <button (click)="deleteBook()" class="btn btn-danger">Delete</button>&nbsp;
+      </td>
+      </ng-template>
+        
+
+    </tr>
+
+
+  </tbody>
+
+</table>
+<div>
+  <button (click)="add()" class="btn btn-primary">Add</button>&nbsp;
+</div>
+
+{{roleName}}
